@@ -5,7 +5,7 @@ $(document).ready(function(){
     $.ajax({
       type: 'GET',
       url: '/songs',
-      success: function(response) {
+      success: function(response) { // get songList back, songlist = response
         console.log('response', response);
       },
       error: function(error) {
@@ -14,7 +14,7 @@ $(document).ready(function(){
     });
   }
 
-  $('#addSongButton').on('click', function(){
+  $('#addSongButton').on('click', function(){ // event listener pushes a new object onto song array
     var newSongTitle = $('#title').val();
     var newSongArtist = $('#artist').val();
     var newSongObject = {
@@ -22,7 +22,7 @@ $(document).ready(function(){
       artist: newSongArtist
     };
     console.log(newSongObject);
-    $.ajax({
+    $.ajax({ // adding data
       type: 'POST',
       url: '/newSong',
       data: newSongObject,
